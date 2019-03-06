@@ -50,18 +50,18 @@ def read_requirements(filename):
 
 
 setup(
-    name='http-prompt',
-    version=find_version('http_prompt', '__init__.py'),
-    url='https://github.com/eliangcs/http-prompt',
-    description='An interactive HTTP command-line client',
+    name='redfish-prompt',
+    version=find_version('redfish_prompt', '__init__.py'),
+    url='https://github.com/nsfcac/redfish-prompt',
+    description='An interactive HTTP command-line client customized for the Redfish standard cloned from eliangcs/http-prompt',
     long_description=read_description('README.rst'),
-    author='Chang-Hung Liang',
-    author_email='eliang.cs@gmail.com',
+    author='NSF Cloud and Autonomic Computing Center',
+    author_email='info@nsfcac.org',
     license='MIT',
-    packages=['http_prompt', 'http_prompt.context'],
+    packages=['redfish_prompt', 'redfish_prompt.context'],
     entry_points="""
         [console_scripts]
-        http-prompt=http_prompt.cli:cli
+        redfish-prompt=redfish_prompt.cli:cli
     """,
     install_requires=read_requirements('requirements.txt'),
     classifiers=[
