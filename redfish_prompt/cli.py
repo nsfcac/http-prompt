@@ -122,6 +122,20 @@ def cli(spec, env, url, http_options):
                     spec = None
         finally:
             f.close()
+    else:
+        spec = "https://redfish.dmtf.org/schemas/openapi.yaml"
+        click.echo("Loading current Redfish OpenAPI schema from '%s' by default; use --spec option on launch if needed to override" %
+                   spec)
+        f = urlopen(spec)
+        content = f.read().decode('utf-8')
+        try:
+            spec = yaml.load(content)
+        except yaml.YAMLError:
+            click.secho("Warning: Specification file '%s' is not valid YAML" %
+                        spec, err=True, fg='red')
+            spec = None
+        finally:
+            f.close()
 
     if url:
         url = fix_incomplete_url(url)
