@@ -22,7 +22,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 from collections import OrderedDict
 
-from http_prompt import __version__
+from redfish_prompt import __version__
 
 # -- General configuration ------------------------------------------------
 

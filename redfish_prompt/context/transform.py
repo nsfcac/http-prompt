@@ -4,7 +4,7 @@ import json
 
 import six
 
-from http_prompt.utils import smart_quote
+from redfish_prompt.utils import smart_quote
 
 
 def _noop(s):

@@ -1,4 +1,4 @@
-from http_prompt.tree import Node
+from redfish_prompt.tree import Node
 
 
 class Context(object):
