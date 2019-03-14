@@ -6,7 +6,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install --install-option="--prefix=/install" -r /requirements.txt
 FROM base
 COPY --from=builder /install /usr/local
-COPY redfish_prompt /app
+COPY . /app
 WORKDIR /app
 RUN pip install -e .
-CMD ["redfish-prompt", "-w 4", "main:app"]
+CMD ["redfish-prompt"]
