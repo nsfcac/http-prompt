@@ -12,7 +12,7 @@ from functools import partial
 
 def _get_dir(envvar_name, default_dir, resource_name=None):
     base_dir = os.getenv(envvar_name) or default_dir
-    app_dir = os.path.join(base_dir, 'http-prompt')
+    app_dir = os.path.join(base_dir, 'redfish-prompt')
     if not os.path.exists(app_dir):
         os.makedirs(app_dir, mode=0o700)
 
