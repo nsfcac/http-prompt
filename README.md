@@ -13,3 +13,8 @@ This is an experimental extension of the http-prompt tool intended to be a playg
 [![Watch the video](https://imgur.com/t4ceGNK.png)](https://www.youtube.com/watch?v=HzfN9qrMNDI)
 
 
+<a href="https://www.youtube.com/watch?v=HzfN9qrMNDI
+" target="_blank"><img src="https://imgur.com/t4ceGNK.png" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
