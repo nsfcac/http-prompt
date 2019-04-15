@@ -33,6 +33,6 @@ This will finish processing dependencies for redfish-prompt 1.0.0.
 
 This fetches the [Redfish OpenAPI schema](https://redfish.dmtf.org/schemas/openapi.yaml), from the web as a default.
 
-To change URL address, use cd:
+To change URL address, use cd:<br/>
 `#Relative URL path`<br/>
 `$ cd redfish/v1`
