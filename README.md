@@ -23,16 +23,16 @@ We recommend having setup [conda](https://github.com/conda/conda) environment to
 
 Switch to the cloned directory and run the following commands
 
-`cd redfish-prompt/`
-`python setup.py install`
+`$ cd redfish-prompt/`<br/>
+`$ python setup.py install`
 
 This will finish processing dependencies for redfish-prompt 1.0.0.
 
 ## Quickstart
-`redfish-prompt`
+`$ redfish-prompt`
 
 This fetches the [Redfish OpenAPI schema](https://redfish.dmtf.org/schemas/openapi.yaml), from the web as a default.
 
 To change URL address, use cd:
-`#Relative URL path`
-`cd redfish/v1`
+`#Relative URL path`<br/>
+`$ cd redfish/v1`
