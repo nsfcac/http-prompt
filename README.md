@@ -52,7 +52,7 @@ To combine multiple Swagger schemas into one dereferenced schema use [Swagger Co
 A general form of dereferencing with swagger-combine is<br/> 
 `$ swagger-combine –o <output_filename> -f <format of output_file> <input_filename>`<br/>
 
-For instance, dereferencing Redfish's openapi.yaml file into combined YAML and JSON formats
+For instance, dereferencing Redfish's openapi.yaml file into combined YAML and JSON formats<br/> 
 `$ swagger-combine –o openapi-combined.yaml –f yaml openapi.yaml`<br/> 
 `$ swagger-combine –o openapi-combined.json –f yaml openapi.yaml`
 
