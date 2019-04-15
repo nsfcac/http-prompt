@@ -16,5 +16,5 @@ This is an experimental extension of the http-prompt tool intended to be a playg
 ---
 
 ### Installation:
-Clone this repository in your local machine.
+Clone this repository in your local machine<br/>
 `$ git clone https://github.com/nsfcac/redfish-prompt.git`
