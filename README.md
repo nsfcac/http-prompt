@@ -46,3 +46,13 @@ The functionality of the tool can be tested by running a Mockup server.
 `$ redfish-prompt localhost:8000/redfish/v1`<br/>
 `$ redfish-prompt localhost:8000/redfish/v1 --spec = openapi-combined.yaml`<br/>
 `$ redfish-prompt localhost:8000/redfish/v1 --spec = openapi-combined.json`
+
+## Notes
+To combine multiple Swagger schemas into one dereferenced schema use [Swagger Combine](https://github.com/maxdome/swagger-combine) installation.
+A general form of dereferencing with swagger-combine is 
+`$ swagger-combine –o <output_filename> -f <format of output_file> <input_filename>`<br/>
+
+For instance, dereferencing Redfish's openapi.yaml file into combined YAML and JSON formats
+`$ swagger-combine –o openapi-combined.yaml –f yaml openapi.yaml`
+`$ swagger-combine –o openapi-combined.json –f yaml openapi.yaml`
+
