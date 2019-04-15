@@ -43,3 +43,6 @@ One can now see auto completion option enabled with redfish-prompt.
 The functionality of the tool can be tested by running a Mockup server. 
 [redfishMockupCreator](https://github.com/DMTF/Redfish-Mockup-Creator) is a python34 program that builds a redfish Mockup folder structure from a real live Redfish service. This folder structure can then be mounted under the [redfishMockupServer](https://github.com/DMTF/Redfish-Mockup-Server) tool. Once the Redfish Mockup server is running on the localhost we can launch redfish-prompt.
 
+`$ redfish-prompt localhost:8000/redfish/v1`<br/>
+`$ redfish-prompt localhost:8000/redfish/v1 --spec = openapi-combined.yaml`<br/>
+`$ redfish-prompt localhost:8000/redfish/v1 --spec = openapi-combined.json`
