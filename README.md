@@ -7,7 +7,7 @@ This is an experimental extension of the http-prompt tool intended to be a playg
 **_redfish-prompt_** is a swift and robust tool capable of prompted navigation for communicating with custom API endpoints.
 + An interactive command line tool with auto-complete feature to navigate schema and interrogate an endpoint.  
 + An automated traverser tool for navigating collections in a multi-level schema for a hypermedia API like Redfish.  
-+ A promising tool for system mangers and network engineers to reach endpoints and handle critical parameters in data centers. 
++ A promising tool for system mangers and network engineers to reach endpoints and handle critical parameters. 
 
 ## Demo
 
