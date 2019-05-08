@@ -30,7 +30,8 @@ from .lexer import HttpPromptLexer
 from .utils import smart_quote
 from .xdg import get_data_dir
 
-
+import pickle
+ 
 # XXX: http://click.pocoo.org/python3/#unicode-literals
 click.disable_unicode_literals_warning = True
 
@@ -90,10 +91,12 @@ def normalize_url(ctx, param, value):
               callback=normalize_url)
 @click.option('--env', help="Environment file to preload.",
               type=click.Path(exists=True))
+@click.option('--savespec', help="Save local copy of OpenAPI/Swagger specification file.",
+              is_flag=True, default=False)
 @click.argument('url', default='')
 @click.argument('http_options', nargs=-1, type=click.UNPROCESSED)
 @click.version_option(message='%(version)s')
-def cli(spec, env, url, http_options):
+def cli(spec, env, url, http_options, savespec):
     click.echo('Version: %s' % __version__)
 
     copied, config_path = config.initialize()
@@ -136,6 +139,12 @@ def cli(spec, env, url, http_options):
             spec = None
         finally:
             f.close()
+
+    if savespec:
+        savedspec=os.path.join(get_data_dir(), 'savedspec')
+        click.echo("Saving local copy of the OpenAPI specification as {0}".format(savedspec))
+        with open(savedspec, 'wb') as handle:
+            pickle.dump(spec, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     if url:
         url = fix_incomplete_url(url)
