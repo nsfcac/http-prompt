@@ -11,7 +11,7 @@ This is an experimental extension of the http-prompt tool intended to be a playg
 
 ## Demo
 
-[![Watch the video](https://imgur.com/t4ceGNK.png)](https://www.youtube.com/watch?v=HzfN9qrMNDI)
+[![Watch the video](http-prompt.gif)](http-prompt.gif)
 
 
 
