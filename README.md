@@ -9,17 +9,20 @@ This is an experimental extension of the http-prompt tool intended to be a playg
 + An automated traverser tool for navigating collections in a multi-level schema for a hypermedia API like Redfish.  
 + A promising tool for system mangers and network engineers to reach endpoints and handle critical parameters. 
 
-## Demo
+## Demos
 
-[![Watch the video](http-prompt.gif)](http-prompt.gif)
+Basic usage:
+[![Watch the video](redfish-prompt-demo.gif)](redfish-prompt-demo.gif)
 
+Save and load a copy of the spec locally:
+[![How to save spec locally](redfish-prompt-demo-savespec.gif)](redfish-prompt-demo-savespec.gif)
 
 
 ## Installation:
 Clone this repository in your local machine<br/>
 `$ git clone https://github.com/nsfcac/redfish-prompt.git`
 
-We recommend having setup [conda](https://github.com/conda/conda) environment to avoid package dependency or permission errors if you are installing it on a system-wide Python. Note that you need sudo access if you are trying to install it system-wide. 
+We recommend having setup a local python (e.g., [conda](https://github.com/conda/conda) ) environment to avoid package dependency or permission errors if you are installing it on a system-wide Python. Note that you need sudo access if you are trying to install it system-wide. 
 
 Switch to the cloned directory and run the following commands
 
@@ -38,6 +41,8 @@ To change URL address, use cd:<br/>
 `$ cd redfish/v1`
 
 One can now see auto completion option enabled with redfish-prompt. 
+
+The tool differs from http-prompt in that it will load the Redfish OpenAPI description files from the DMTF web site automatically upon start. This can still be replaced by any other OpenAPI description, for example a newer or customized specification file, using the `--spec` option. You can save the loaded specification as a Python pickled object locally by specifying the `--savespec` option. This will write it into local storage in a location printed on the console. (This location varies depending on the operating system, following the convention used by http-prompt and httpie, but is always echoed to the output when this occurs.) Future lauches of redfish-prompt will use this savedspec file and bypass reading the OpenAPI description from the web, as a convenience for speed and offline usage. To restore the original behavior, remove the savedspec file from the local storage.
 
 ## Testing
 The functionality of the tool can be tested by running a Mockup server. 
