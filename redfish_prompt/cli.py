@@ -30,7 +30,8 @@ from .lexer import HttpPromptLexer
 from .utils import smart_quote
 from .xdg import get_data_dir
 
-
+import pickle
+ 
 # XXX: http://click.pocoo.org/python3/#unicode-literals
 click.disable_unicode_literals_warning = True
 
@@ -90,10 +91,12 @@ def normalize_url(ctx, param, value):
               callback=normalize_url)
 @click.option('--env', help="Environment file to preload.",
               type=click.Path(exists=True))
+@click.option('--savespec', help="Save local copy of OpenAPI/Swagger specification file.",
+              is_flag=True, default=False)
 @click.argument('url', default='')
 @click.argument('http_options', nargs=-1, type=click.UNPROCESSED)
 @click.version_option(message='%(version)s')
-def cli(spec, env, url, http_options):
+def cli(spec, env, url, http_options, savespec):
     click.echo('Version: %s' % __version__)
 
     copied, config_path = config.initialize()
@@ -106,6 +109,9 @@ def cli(spec, env, url, http_options):
     # Override pager/less options
     os.environ['PAGER'] = cfg['pager']
     os.environ['LESS'] = '-RXF'
+
+    # File name for saving and reading saved specification file if requested
+    savedspec=os.path.join(get_data_dir(), 'savedspec')
 
     if spec:
         f = urlopen(spec)
@@ -123,19 +129,32 @@ def cli(spec, env, url, http_options):
         finally:
             f.close()
     else:
-        spec = "https://redfish.dmtf.org/schemas/openapi.yaml"
-        click.echo("Loading current Redfish OpenAPI schema from '%s' by default; use --spec option on launch if needed to override" %
-                   spec)
-        f = urlopen(spec)
-        content = f.read().decode('utf-8')
         try:
-            spec = yaml.load(content, Loader=yaml.SafeLoader)
-        except yaml.YAMLError:
-            click.secho("Warning: Specification file '%s' is not valid YAML" %
+            with open(savedspec, 'rb') as handle:
+                spec = pickle.load(handle)
+                handle.close()
+                click.echo("Loaded previously saved local copy of the OpenAPI specification from {0}".format(savedspec))
+        except:
+            spec = "https://redfish.dmtf.org/schemas/openapi.yaml"
+            click.echo("Loading current Redfish OpenAPI schema from '%s' by default; use --spec option on launch if needed to override" %
+                   spec)
+            f = urlopen(spec)
+            content = f.read().decode('utf-8')
+            try:
+                spec = yaml.load(content, Loader=yaml.SafeLoader)
+            except yaml.YAMLError:
+                click.secho("Warning: Specification file '%s' is not valid YAML" %
                         spec, err=True, fg='red')
-            spec = None
-        finally:
-            f.close()
+                spec = None
+            finally:
+                f.close()
+
+    if savespec:
+        savedspec=os.path.join(get_data_dir(), 'savedspec')
+        click.echo("Saving local copy of the OpenAPI specification as {0}".format(savedspec))
+        with open(savedspec, 'wb') as handle:
+            pickle.dump(spec, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            handle.close()
 
     if url:
         url = fix_incomplete_url(url)
